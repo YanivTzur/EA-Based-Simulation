@@ -28,12 +28,12 @@ with some low probability, replacing the gene with another one chosen uniformly 
 
 ## Compilation Instructions:
         
-You will require the following dependencies:\
+You will require the following dependencies:
 	* jcommon-1.0.23.jar
 	* jfreechart-1.0.19-experimental.jar
 	* jfreechart-1.0.19-demo.jar
 	* hamcrest-core-1.3.jar
-	* jfreechart-1.0.19.jar
+	*  jfreechart-1.0.19.jar
 	* jfreesvg-2.0.jar
 	* junit-4.11.jar
 	* orsoncharts-1.4-eval-nofx.jar
