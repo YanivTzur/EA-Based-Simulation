@@ -4,7 +4,7 @@ Author: Yaniv Tzur\
 Date: 24/02/18\
 Version: 1.0
 
-## General Description:
+## Description:
 
 The program is an application of evolutionary algorithms. The program's execution is divided into
 runs, each of which is in turn divided into generations.
@@ -26,21 +26,20 @@ disabled from the GUI though). Crossover creates new solutions by combining old 
 creates new solutions by taking an existing solution and for each gene (component) of the chromosome,
 with some low probability, replacing the gene with another one chosen uniformly at random.
 
-## Compilation Instructions:
+## Installation:
         
 You will require the following dependencies:
-	* jcommon-1.0.23.jar
-	* jfreechart-1.0.19-experimental.jar
-	* jfreechart-1.0.19-demo.jar
-	* hamcrest-core-1.3.jar
-	*  jfreechart-1.0.19.jar
-	* jfreesvg-2.0.jar
-	* junit-4.11.jar
-	* orsoncharts-1.4-eval-nofx.jar
-	* orsonpdf-1.6-eval.jar
-	* servlet.jar
-	* swtgraphics2d.jar\\
-Then simply, compile all .java files. 
+* jcommon-1.0.23.jar
+* jfreechart-1.0.19-experimental.jar
+* jfreechart-1.0.19-demo.jar
+* hamcrest-core-1.3.jar
+* jfreechart-1.0.19.jar
+* jfreesvg-2.0.jar
+* junit-4.11.jar
+* orsoncharts-1.4-eval-nofx.jar
+* orsonpdf-1.6-eval.jar
+* servlet.jar
+* swtgraphics2d.jar\\
 
 ## How to Run the Program:	
 As a user:\
