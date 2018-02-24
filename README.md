@@ -39,7 +39,7 @@ You will require the following dependencies:
 * orsoncharts-1.4-eval-nofx.jar
 * orsonpdf-1.6-eval.jar
 * servlet.jar
-* swtgraphics2d.jar\\
+* swtgraphics2d.jar
 
 ## How to Run the Program:	
 * As a user:
