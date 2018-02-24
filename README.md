@@ -4,7 +4,7 @@ Author: Yaniv Tzur
 Date: 24/02/18
 Version: 1.0
 
-General Description:
+## General Description:
 
 The program is an application of evolutionary algorithms. The program's execution is divided into
 runs, each of which is in turn divided into generations.
