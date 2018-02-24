@@ -26,8 +26,9 @@ disabled from the GUI though). Crossover creates new solutions by combining old 
 creates new solutions by taking an existing solution and for each gene (component) of the chromosome,
 with some low probability, replacing the gene with another one chosen uniformly at random.
 
-###Compilation Instructions:
-        You will require the following dependencies:
+Compilation Instructions:
+        
+	You will require the following dependencies:
 		- jcommon-1.0.23.jar
 		- jfreechart-1.0.19-experimental.jar
 		- jfreechart-1.0.19-demo.jar
@@ -42,13 +43,14 @@ with some low probability, replacing the gene with another one chosen uniformly 
 	Then simply, compile all .java files. 
 
 How to Run the Program:
-As a user:
-	Double click EASimulationProgram.jar.
-From an IDE (Developer):
-	Run Main.class.
+	
+	As a user:
+		Double click EASimulationProgram.jar.
+	From an IDE (Developer):
+		Run Main.class.
 
 GUI Description:
-
+	
 	Parameters (Top Right Side of the Screen):
 	
 		- Number of Chromosomes: The number of solutions (chromosomes) maintained in each generation.
