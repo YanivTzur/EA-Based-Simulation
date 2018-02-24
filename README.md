@@ -86,3 +86,6 @@ Results (Left Side of the Screen):
   The fitness of a solution reflects how good is the matching between all men, women and dogs.
   The fitness of a solution is higher, the more individuals there are with mates ranked higher in their lists of preferences.    
 * The lower part of the screen shows a textual display of the results of the current sequence of runs.
+
+## License:
+This project is licensed under the GPL License - see the LICENSE.md file for details.
