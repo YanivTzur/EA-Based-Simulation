@@ -49,16 +49,16 @@ From an IDE (Developer):\
 
 ## GUI Description:
 Parameters (Top Right Side of the Screen):
-	* Number of Chromosomes: The number of solutions (chromosomes) maintained in each generation.
-	* Preference List Generation: Whether preference lists should be generated once at the
-			      	      beginning of each run, or at the beginning of each generation.
-				      The latter option is supposed to produce a relatively "random"
-				      behavior, as any attempt to improve the solution is rendered
-				      useless, as the preference lists change in each generation.
-	* Crossover Enabled:          Whether crossover should be enabled. This is a behavior
-				      which combines solutions at the end of each generation
-				      to create new combined solutions (chromosomes) for the
-				      population of the next generation.
+* Number of Chromosomes: The number of solutions (chromosomes) maintained in each generation.
+* Preference List Generation: Whether preference lists should be generated once at the
+			      beginning of each run, or at the beginning of each generation.
+			      The latter option is supposed to produce a relatively "random"
+		    	      behavior, as any attempt to improve the solution is rendered
+			      useless, as the preference lists change in each generation.
+* Crossover Enabled:          Whether crossover should be enabled. This is a behavior
+			      which combines solutions at the end of each generation
+		              to create new combined solutions (chromosomes) for the
+			      population of the next generation.
 Statistics (Middle Right Side of the Screen):
         * Elapsed Time (sec): The time elapsed in seconds since the beginning of the last run.
         * Current Run: The serial number of the current run (starts at 0).
