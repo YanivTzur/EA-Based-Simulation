@@ -42,9 +42,9 @@ You will require the following dependencies:
 * swtgraphics2d.jar\\
 
 ## How to Run the Program:	
-As a user:\
-	Double click EASimulationProgram.jar.\
-From an IDE (Developer):\
+* As a user:
+	Double click EASimulationProgram.jar.
+* From an IDE (Developer):
 	Run Main.class.
 
 ## GUI Description:
