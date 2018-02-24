@@ -41,13 +41,14 @@ You will require the following dependencies:
 * servlet.jar
 * swtgraphics2d.jar
 
-## How to Run the Program:	
+## Usage:
+### How to Run the Program:	
 * As a user:
   * Double click EASimulationProgram.jar.
 * From an IDE (Developer):
   * Run Main.class.
 
-## GUI Description:
+### GUI Description:
 Parameters (Top Right Side of the Screen):
 * Number of Chromosomes: The number of solutions (chromosomes) maintained in each generation.
 * Preference List Generation: Whether preference lists should be generated once at the
