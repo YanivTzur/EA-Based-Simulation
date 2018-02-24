@@ -43,9 +43,9 @@ You will require the following dependencies:
 
 ## How to Run the Program:	
 * As a user:
-	Double click EASimulationProgram.jar.
+ * Double click EASimulationProgram.jar.
 * From an IDE (Developer):
-	Run Main.class.
+ * Run Main.class.
 
 ## GUI Description:
 Parameters (Top Right Side of the Screen):
