@@ -26,7 +26,7 @@ disabled from the GUI though). Crossover creates new solutions by combining old 
 creates new solutions by taking an existing solution and for each gene (component) of the chromosome,
 with some low probability, replacing the gene with another one chosen uniformly at random.
 
-Compilation Instructions:
+###Compilation Instructions:
         You will require the following dependencies:
 		- jcommon-1.0.23.jar
 		- jfreechart-1.0.19-experimental.jar
