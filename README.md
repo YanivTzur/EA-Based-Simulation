@@ -80,9 +80,8 @@ Run Control (Bottom Right Side of the Screen):
    * Stop/Pause: Pauses the current sequence of runs. You can resume by pressing "Continue".
 
 Results (Left Side of the Screen):\
-	The upper part of the screen contains a line chart showing the best, average and worst fitness
-	values of the solutions in each generation of the current run.
-	The fitness of a solution reflects how good is the matching between all men, women and dogs.
-	The fitness of a solution is higher, the more individuals there are with mates ranked higher
-	in their lists of preferences.    
-	The lower part of the screen shows a textual display of the results of the current sequence of runs.
+* The upper part of the screen contains a line chart showing the best, average and worst fitness
+  values of the solutions in each generation of the current run.
+  The fitness of a solution reflects how good is the matching between all men, women and dogs.
+  The fitness of a solution is higher, the more individuals there are with mates ranked higher in their lists of preferences.    
+* The lower part of the screen shows a textual display of the results of the current sequence of runs.
