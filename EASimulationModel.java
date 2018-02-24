@@ -10,24 +10,25 @@ import java.util.List;
  */
 public class EASimulationModel 
 {	
-	public static final int DIVISION_BY_ZERO_ERROR = -1; // Error code returned when a division by zero
-													 	 // was about to occur.
-	public static final int DEFAULT_NUMBER_OF_CHROMOSOMES = 50; // Default number of chromosomes to use
-																// in each generation.
+	public static final int DIVISION_BY_ZERO_ERROR = -1; // Error code returned when a
+                                                         // division by zero was about to occur.
+	public static final int DEFAULT_NUMBER_OF_CHROMOSOMES = 30; // Default number of chromosomes to
+                                                                // use in each generation.
 	
 	private Man[] _men; // All men in the solution space.
 	private Woman[] _women; // All women in the solution space.
 	private Dog[] _dogs; // All dogs in the solution space.
 	private Chromosome[] _chromosomes; // The chromosomes (solutions) currently existing in the simulation.
 	private int _currentGenerationNumber; // The number of the current generation (starts at 0).
+	private int _numberOfChromosomes; // The number of chromosomes to use.
 	
 	/**
-	 * Creates a new model with an initial random population.
+	 * Creates a new empty model.
 	 */
 	public EASimulationModel()
 	{
 		_currentGenerationNumber = 0;
-		_chromosomes = new Chromosome[DEFAULT_NUMBER_OF_CHROMOSOMES];
+		_numberOfChromosomes = DEFAULT_NUMBER_OF_CHROMOSOMES;
 	}
 	
 	/**
@@ -39,6 +40,7 @@ public class EASimulationModel
 	 */
 	public void initializeChromosomes(boolean newPreferenceLists)
 	{
+		_chromosomes = new Chromosome[_numberOfChromosomes];
 		initializeChromosomes(newPreferenceLists, _chromosomes);
 	}
 	
@@ -53,11 +55,12 @@ public class EASimulationModel
 	{
 		if (_men == null || _women == null || _dogs == null || newPreferenceLists == true)
 		{
-			_men = initializeMen(chromosomes.length);
-			_women = initializeWomen(chromosomes.length);
-			_dogs = initializeDogs(chromosomes.length);
+			_men = initializeMen(Chromosome.NUM_OF_GENES);
+			_women = initializeWomen(Chromosome.NUM_OF_GENES);
+			_dogs = initializeDogs(Chromosome.NUM_OF_GENES);
 		}
-		randomizedGenerateInitialPopulation(newPreferenceLists, chromosomes, _men, _women, _dogs);
+		randomizedGenerateInitialPopulation(newPreferenceLists, chromosomes, _men,
+				                            _women, _dogs);
 	}
 	
 	/**
@@ -142,39 +145,42 @@ public class EASimulationModel
 													 Woman[] women,
 													 Dog[] dogs)
 	{
-		ArrayList<Man> availableMen = null;
-		ArrayList<Woman> availableWomen = null;
-		ArrayList<Dog> availableDogs = null; 
-		Man currentMan = null;
-		Woman currentWoman = null;
-		Dog currentDog = null;
-		int currentLength = 0;
-		if (chromosomes != null && men != null && women != null && dogs != null
-			&&
-			chromosomes.length == men.length
-			&&
-			chromosomes.length == women.length
-			&&
-			chromosomes.length == dogs.length)
-		{
-			availableMen = 	new ArrayList<Man>(Arrays.asList(men));
-			availableWomen = new ArrayList<Woman>(Arrays.asList(women));
-			availableDogs = new ArrayList<Dog>(Arrays.asList(dogs));
-			currentLength = chromosomes.length;
-			for (int i = 0; i < chromosomes.length; i++)
-			{
-				currentMan = availableMen.remove(RNGUtilities.generateRandomInteger(0, currentLength-1));
-				currentWoman = availableWomen.remove(RNGUtilities.generateRandomInteger(0, currentLength-1));
-				currentDog = availableDogs.remove(RNGUtilities.generateRandomInteger(0, currentLength-1));
-				currentLength--;
-				chromosomes[i] = new Chromosome(currentMan, currentWoman, currentDog);
-			}
-			if (newPreferenceLists == true) // Randomly create new preference lists.
-				randomizedGeneratePreferenceLists(men, women, dogs);
-		}
+		if (chromosomes != null && men != null && women != null && dogs != null)
+            {
+                for (int i = 0; i < chromosomes.length; i++)
+                    chromosomes[i] = randomizedGenerateChromosome(men, women, dogs);
+                if (newPreferenceLists == true) // Randomly create new preference lists.
+                    randomizedGeneratePreferenceLists(men, women, dogs);
+            }
 	}
-	
-	/**
+
+    /**
+     * Constructs a new chromosome by iteratively selecting uniformly at random a triplet of
+     * the form (man, woman, dog) from the sets of men, women and dogs that haven't been
+     * selected yet, and adding it to the gradually built chromosome.
+     * @param men the set of all men.
+     * @param women the set of all women.
+     * @param dogs the set of all dogs.
+     * @return the new chromosome created as described above.
+     */
+    private Chromosome randomizedGenerateChromosome(Man[] men, Woman[] women, Dog[] dogs)
+    {
+        Gene[] newGenes = new Gene[Chromosome.NUM_OF_GENES];
+        List<Man> availableMen = Arrays.asList(Arrays.copyOf(men,men.length));
+        List<Woman> availableWomen = Arrays.asList(Arrays.copyOf(women, women.length));
+        List<Dog> availableDogs = Arrays.asList(Arrays.copyOf(dogs, dogs.length));
+        for (int i = 0; i < Chromosome.NUM_OF_GENES; i++)
+            newGenes[i] = new Gene(availableMen.get(RNGUtilities.generateRandomInteger(0,
+                                                    availableMen.size() - 1)),
+                                   availableWomen.get(RNGUtilities.generateRandomInteger(0,
+                                                      availableWomen.size() - 1)),
+                                   availableDogs.get(RNGUtilities.generateRandomInteger(0,
+                                                     availableDogs.size() - 1)));
+        return new Chromosome(newGenes);
+    }
+
+
+    /**
 	 * Randomly generates a list of preferences for each defined man, woman and dog.
 	 * @param men An array containing references to all defined men.
 	 * @param women An array containing references to all defined women.
@@ -302,7 +308,7 @@ public class EASimulationModel
 		if (_chromosomes != null)
 			for(Chromosome chromosome : _chromosomes)
 			{
-				currFitness = chromosome.getFitness(_chromosomes.length);
+				currFitness = chromosome.getFitness();
 				if (currFitness > maxFitness)
 					maxFitness = currFitness;
 			}
@@ -321,7 +327,7 @@ public class EASimulationModel
 			for(Chromosome chromosome : _chromosomes)
 			{
 				count++;
-				totalFitness += chromosome.getFitness(_chromosomes.length);
+				totalFitness += chromosome.getFitness();
 			}
 		if (count != 0)
 			return (totalFitness/count);
@@ -341,7 +347,7 @@ public class EASimulationModel
 		if (_chromosomes != null)
 			for(Chromosome chromosome : _chromosomes)
 			{
-				currFitness = chromosome.getFitness(_chromosomes.length);
+				currFitness = chromosome.getFitness();
 				if (currFitness < minFitness)
 					minFitness = currFitness;
 			}
@@ -364,7 +370,7 @@ public class EASimulationModel
 	public int getNumOfMen() 
 	{
 		if (_chromosomes != null)
-			return _chromosomes.length;
+			return _men.length;
 		return 0;
 	}
 
@@ -375,7 +381,7 @@ public class EASimulationModel
 	public int getNumOfWomen() 
 	{
 		if (_chromosomes != null)
-			return _chromosomes.length;
+			return _women.length;
 		return 0;
 	}
 
@@ -386,7 +392,7 @@ public class EASimulationModel
 	public int getNumOfDogs() 
 	{
 		if (_chromosomes != null)
-			return _chromosomes.length;
+			return _dogs.length;
 		return 0;
 	}
 
@@ -395,9 +401,8 @@ public class EASimulationModel
 	 * number to the input number.
 	 * @param newPopulation The new population of solutions (chromosomes) to set as the current
 	 * 						population.
-	 * @param nextGenerationNumber The new number to set as the generation number.
 	 */
-	public void setNewGeneration(Chromosome[] newPopulation) 
+	public void setNewGeneration(Chromosome[] newPopulation)
 	{
 		setChromosomes(newPopulation);
 	}
@@ -427,5 +432,14 @@ public class EASimulationModel
 	public void setGenerationNumber(int nextGenerationNumber)
 	{
 		_currentGenerationNumber = nextGenerationNumber;
+	}
+
+	/**
+	 * Sets the number of chromosomes to be used in the program to the input value.
+	 * @param numberOfChromosomes The new number of chromosomes to be use.
+	 */
+	public void setNumberOfChromosomes(int numberOfChromosomes) 
+	{
+		_numberOfChromosomes = numberOfChromosomes;
 	}
 }
