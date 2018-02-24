@@ -1,7 +1,7 @@
 # EA-Based-Simulation
-Three-way Matching Simulation Program
-Author: Yaniv Tzur
-Date: 24/02/18
+Three-way Matching Simulation Program\
+Author: Yaniv Tzur\
+Date: 24/02/18\
 Version: 1.0
 
 ## General Description:
