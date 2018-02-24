@@ -60,11 +60,11 @@ Parameters (Top Right Side of the Screen):
 				      to create new combined solutions (chromosomes) for the
 				      population of the next generation.
 Statistics (Middle Right Side of the Screen):
-	* Elapsed Time (sec): The time elapsed in seconds since the beginning of the last run.
-	* Current Run: The serial number of the current run (starts at 0).
-	* Current Generation: The serial number of the current generation in the current run (starts at 0).
-	* Number of Men: The number of men in the solution space.
-	* Number of Women: The number of women in the solution space.
+        * Elapsed Time (sec): The time elapsed in seconds since the beginning of the last run.
+        * Current Run: The serial number of the current run (starts at 0).
+        * Current Generation: The serial number of the current generation in the current run (starts at 0).
+        * Number of Men: The number of men in the solution space.
+        * Number of Women: The number of women in the solution space.
         * Number of Dogs: The number of dogs in the solution space.
 
 Run Control (Bottom Right Side of the Screen):
